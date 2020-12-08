@@ -1,0 +1,106 @@
+/*base color: 547A54*/
+
+body{
+    background-color: #385338;
+    margin: 0px;
+    color: #000;
+    font: normal 16px "Titillium Web";
+}
+
+.vertical_ribbon{  
+    box-sizing: border-box;
+    width: 20%;
+    float: left;
+    text-align: right;
+    padding-right: 2%;
+    padding-top: 1px;
+    padding-left: 5%;
+    color: #E5D5C7;
+    font: normal 16px "Titillium Web";
+}
+
+.vertical_ribbon h1{
+    text-transform: uppercase;
+    font-size: 40px;
+}
+
+.title{
+    box-sizing: border-box;
+    width: 20%;
+    position: fixed;
+    top: 35%;
+    left: 5px;
+    padding-right: 2%;
+    padding-left: 5%;
+}
+
+.content{
+    box-sizing: border-box;
+    width: 80%;
+    float: left;
+    background-color: #fff;
+    font: normal 16px "Merriweather";
+    padding-left: 4%;
+    padding-right: 4%;
+}
+
+.new_post_section{
+    margin-top: 20px;
+    border: 2px solid #204420;
+    padding-left: 2%;
+    padding-bottom: 2%;
+}
+
+.new_post_section p{
+    font-weight: bold;
+    font-size: 25px;
+    color: #204420;
+}
+
+form label{
+    color:#204420;
+    text-decoration: underline;
+}
+
+form textarea{
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+form input[type="submit"]{
+    background-color: #204420;
+    color: #d4d4d4;
+    padding: 10px 15px;
+    border: none;
+    margin-top: 10px;
+}
+
+.post{
+    margin-top: 75px;
+}
+
+.post h1{
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.postdate{
+    border-bottom: 2px solid #B9A492;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    color: #B9A492;
+}
+
+.postdate p{
+    margin: 0px;
+}
+
+.author p{
+    color: #B9A492;
+    margin: 0px;
+    margin-bottom: 20px;
+}
+
+.clearfix{
+    clear: both;
+}

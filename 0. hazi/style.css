@@ -1,0 +1,67 @@
+.container{
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-image: url("../images/topography.png");
+    background-repeat: repeat;
+    /*width: 1700px;*/
+}
+
+.headline{
+    height: 50px;
+    background-color: rgb(41, 40, 28);
+}
+
+.contenthead{
+    padding-top: 10px;
+    padding-left: 10%;
+}
+
+.contentbody{
+    margin-top: 50px;
+    margin-left: 10%;
+    margin-right: 10%;
+    color: black;
+    font: normal 16px "Roboto Mono";
+}
+
+.title{
+    font: bold 50px "Oxygen";  
+}
+
+.lowertitle{
+    color: crimson;
+    font: 25px "Oxygen";
+}
+
+.info{
+    line-height: 1.6em;
+}
+
+.separator{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.infotitle{
+    font: bold 40px "Oxygen";
+    text-align: center;
+}
+
+.defname{
+    font: bold 25px "Oxygen";
+}
+
+.defname p{
+    margin-bottom: 0px;
+}
+
+.deftext{
+    font: 14px "Oxygen";
+    line-height: 1.6em;
+}
+
+.deftext p{
+    margin-top: 5px;
+}
