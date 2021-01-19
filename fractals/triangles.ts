@@ -70,4 +70,9 @@ function getNewColor(): string {
   return `hsla(${randomHue}, ${randomSaturation}%, ${randomLight}%, ${randomAlpha})`;
 }
 
-drawTriangleFractal(400, [5, 5]);
+let randomSideLength: number = Math.random() * 400;
+let randomStartingX: number = Math.random() * (405 - randomSideLength);
+let randomStartingY: number =
+  Math.random() * (350 - randomSideLength * Math.cos(Math.PI / 6));
+
+drawTriangleFractal(randomSideLength, [randomStartingX, randomStartingY]);
