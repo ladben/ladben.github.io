@@ -5,12 +5,20 @@ class Img {
   private source: string;
   private name: string;
   private description: string;
+  private order: number;
 
-  constructor(id: number, source: string, name: string, description: string) {
+  constructor(
+    id: number,
+    source: string,
+    name: string,
+    description: string,
+    order: number
+  ) {
     this.id = id;
     this.source = source;
     this.name = name;
     this.description = description;
+    this.order = order;
   }
 
   getId(): number {
@@ -28,6 +36,18 @@ class Img {
   getDescription(): string {
     return this.description;
   }
+
+  getOrder(): number {
+    return this.order;
+  }
+
+  setOrder(value: number): void {
+    this.order = value;
+  }
+
+  canDisplayThumbnail(): boolean {
+    return this.order >= 1 && this.order <= 8;
+  }
 }
 
 let images: Img[] = [];
@@ -37,7 +57,8 @@ images.push(
     1,
     'img/img_01.jpg',
     'Mountain Lake',
-    'Aenean quam augue, tincidunt eu enim eget, tempus tempus dui. Proin pellentesque in odio eu hendrerit. Duis fermentum tortor imperdiet ex pretium, vitae posuere enim.'
+    'Aenean quam augue, tincidunt eu enim eget, tempus tempus dui. Proin pellentesque in odio eu hendrerit. Duis fermentum tortor imperdiet ex pretium, vitae posuere enim.',
+    1
   )
 );
 images.push(
@@ -45,7 +66,8 @@ images.push(
     2,
     'img/img_02.jpg',
     'Peaceful Watermill',
-    'Aenean pellentesque diam in enim condimentum, nec fermentum sapien venenatis. Nam nec lacus a magna sollicitudin porta sit amet et lorem. Vivamus scelerisque facilisis dignissim.'
+    'Aenean pellentesque diam in enim condimentum, nec fermentum sapien venenatis. Nam nec lacus a magna sollicitudin porta sit amet et lorem. Vivamus scelerisque facilisis dignissim.',
+    2
   )
 );
 images.push(
@@ -53,7 +75,8 @@ images.push(
     3,
     'img/img_03.jpg',
     'Beautiful Valley',
-    'Maecenas eget augue sagittis, imperdiet dolor vitae, rhoncus orci. Fusce elementum tincidunt mi nec tempus. Morbi faucibus sapien augue, at facilisis enim maximus ut. Nullam.'
+    'Maecenas eget augue sagittis, imperdiet dolor vitae, rhoncus orci. Fusce elementum tincidunt mi nec tempus. Morbi faucibus sapien augue, at facilisis enim maximus ut. Nullam.',
+    3
   )
 );
 images.push(
@@ -61,7 +84,8 @@ images.push(
     4,
     'img/img_04.jpg',
     'Northern Pier',
-    'Phasellus eleifend metus in tellus semper, nec consectetur neque viverra. Aenean a tempus est, quis mollis urna. Duis aliquam dui ut hendrerit ullamcorper. Nulla tempus.'
+    'Phasellus eleifend metus in tellus semper, nec consectetur neque viverra. Aenean a tempus est, quis mollis urna. Duis aliquam dui ut hendrerit ullamcorper. Nulla tempus.',
+    4
   )
 );
 images.push(
@@ -69,7 +93,8 @@ images.push(
     5,
     'img/img_05.jpg',
     'Mountain Top House',
-    'Proin sodales commodo elit quis aliquam. Cras elementum enim a eros viverra sollicitudin. Aliquam suscipit lorem eget risus tristique, sit amet lacinia felis malesuada. Quisque.'
+    'Proin sodales commodo elit quis aliquam. Cras elementum enim a eros viverra sollicitudin. Aliquam suscipit lorem eget risus tristique, sit amet lacinia felis malesuada. Quisque.',
+    5
   )
 );
 images.push(
@@ -77,7 +102,8 @@ images.push(
     6,
     'img/img_06.jpg',
     'Spring Forest',
-    'Nullam ultrices, elit nec consectetur luctus, dolor metus pretium sem, sed tincidunt sapien metus eget nisi. Pellentesque non mollis purus. Integer aliquet lorem massa, nec.'
+    'Nullam ultrices, elit nec consectetur luctus, dolor metus pretium sem, sed tincidunt sapien metus eget nisi. Pellentesque non mollis purus. Integer aliquet lorem massa, nec.',
+    6
   )
 );
 images.push(
@@ -85,7 +111,8 @@ images.push(
     7,
     'img/img_07.jpg',
     'City Scape',
-    'Donec iaculis tincidunt tincidunt. Ut aliquam sapien sit amet metus dapibus tempus. Sed fringilla ut sem at ullamcorper. Maecenas euismod sapien quis sapien venenatis cursus.'
+    'Donec iaculis tincidunt tincidunt. Ut aliquam sapien sit amet metus dapibus tempus. Sed fringilla ut sem at ullamcorper. Maecenas euismod sapien quis sapien venenatis cursus.',
+    7
   )
 );
 images.push(
@@ -93,7 +120,17 @@ images.push(
     8,
     'img/img_08.jpg',
     'Vintage Music',
-    'Phasellus pellentesque metus non enim ultricies vulputate. Phasellus nec urna eu eros ultrices laoreet non eu magna. Vestibulum ante ipsum primis in faucibus orci luctus.'
+    'Phasellus pellentesque metus non enim ultricies vulputate. Phasellus nec urna eu eros ultrices laoreet non eu magna. Vestibulum ante ipsum primis in faucibus orci luctus.',
+    8
+  )
+);
+images.push(
+  new Img(
+    9,
+    'img/img_09.jpg',
+    '9th img',
+    'Phasellus pellentesque metus non enim ultricies vulputate. Phasellus nec urna eu eros ultrices laoreet non eu magna. Vestibulum ante ipsum primis in faucibus orci luctus.',
+    9
   )
 );
 
@@ -152,12 +189,12 @@ function setSelectedImage(toSelect: number): void {
   // add 'selected' class to list element
   thumbnail.classList.add('selected');
   // set selected indicator
-  console.log('setting indicator');
   setSelectedIndicator(selected);
 }
 
 function setNext(current: number, direction: number): void {
   let newSelected: number = current + direction;
+
   if (newSelected > images.length) {
     newSelected = 1;
   } else if (newSelected < 1) {
@@ -171,7 +208,6 @@ function setSelectedIndicator(selected: number): void {
   let liCount: number = document.querySelectorAll('li').length;
   let selectedId: number = selected - 1;
   let leftPos: number = (1100 - 84 * liCount) / 2 + 34 + 84 * selectedId;
-  console.log(leftPos);
   selectedIndicator.style.left = leftPos.toString() + 'px';
 }
 
@@ -183,6 +219,19 @@ rightArrow.onclick = () => {
 
 leftArrow.onclick = () => {
   setNext(selected, -1);
+  setSelectedImage(selected);
+};
+
+document.body.onkeydown = (event) => {
+  switch (event.key) {
+    case 'ArrowRight':
+      setNext(selected, 1);
+      break;
+
+    case 'ArrowLeft':
+      setNext(selected, -1);
+      break;
+  }
   setSelectedImage(selected);
 };
 

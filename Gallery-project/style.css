@@ -15,6 +15,7 @@ body{
   width: 1100px;
   height: 650px;
   margin: 0 auto;
+  flex-shrink: 0;
 }
 
 .title{

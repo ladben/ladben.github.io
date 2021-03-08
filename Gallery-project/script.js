@@ -1,11 +1,12 @@
 "use strict";
 exports.__esModule = true;
 var Img = /** @class */ (function () {
-    function Img(id, source, name, description) {
+    function Img(id, source, name, description, order) {
         this.id = id;
         this.source = source;
         this.name = name;
         this.description = description;
+        this.order = order;
     }
     Img.prototype.getId = function () {
         return this.id;
@@ -19,17 +20,27 @@ var Img = /** @class */ (function () {
     Img.prototype.getDescription = function () {
         return this.description;
     };
+    Img.prototype.getOrder = function () {
+        return this.order;
+    };
+    Img.prototype.setOrder = function (value) {
+        this.order = value;
+    };
+    Img.prototype.canDisplayThumbnail = function () {
+        return this.order >= 1 && this.order <= 8;
+    };
     return Img;
 }());
 var images = [];
-images.push(new Img(1, 'img/img_01.jpg', 'Mountain Lake', 'Aenean quam augue, tincidunt eu enim eget, tempus tempus dui. Proin pellentesque in odio eu hendrerit. Duis fermentum tortor imperdiet ex pretium, vitae posuere enim.'));
-images.push(new Img(2, 'img/img_02.jpg', 'Peaceful Watermill', 'Aenean pellentesque diam in enim condimentum, nec fermentum sapien venenatis. Nam nec lacus a magna sollicitudin porta sit amet et lorem. Vivamus scelerisque facilisis dignissim.'));
-images.push(new Img(3, 'img/img_03.jpg', 'Beautiful Valley', 'Maecenas eget augue sagittis, imperdiet dolor vitae, rhoncus orci. Fusce elementum tincidunt mi nec tempus. Morbi faucibus sapien augue, at facilisis enim maximus ut. Nullam.'));
-images.push(new Img(4, 'img/img_04.jpg', 'Northern Pier', 'Phasellus eleifend metus in tellus semper, nec consectetur neque viverra. Aenean a tempus est, quis mollis urna. Duis aliquam dui ut hendrerit ullamcorper. Nulla tempus.'));
-images.push(new Img(5, 'img/img_05.jpg', 'Mountain Top House', 'Proin sodales commodo elit quis aliquam. Cras elementum enim a eros viverra sollicitudin. Aliquam suscipit lorem eget risus tristique, sit amet lacinia felis malesuada. Quisque.'));
-images.push(new Img(6, 'img/img_06.jpg', 'Spring Forest', 'Nullam ultrices, elit nec consectetur luctus, dolor metus pretium sem, sed tincidunt sapien metus eget nisi. Pellentesque non mollis purus. Integer aliquet lorem massa, nec.'));
-images.push(new Img(7, 'img/img_07.jpg', 'City Scape', 'Donec iaculis tincidunt tincidunt. Ut aliquam sapien sit amet metus dapibus tempus. Sed fringilla ut sem at ullamcorper. Maecenas euismod sapien quis sapien venenatis cursus.'));
-images.push(new Img(8, 'img/img_08.jpg', 'Vintage Music', 'Phasellus pellentesque metus non enim ultricies vulputate. Phasellus nec urna eu eros ultrices laoreet non eu magna. Vestibulum ante ipsum primis in faucibus orci luctus.'));
+images.push(new Img(1, 'img/img_01.jpg', 'Mountain Lake', 'Aenean quam augue, tincidunt eu enim eget, tempus tempus dui. Proin pellentesque in odio eu hendrerit. Duis fermentum tortor imperdiet ex pretium, vitae posuere enim.', 1));
+images.push(new Img(2, 'img/img_02.jpg', 'Peaceful Watermill', 'Aenean pellentesque diam in enim condimentum, nec fermentum sapien venenatis. Nam nec lacus a magna sollicitudin porta sit amet et lorem. Vivamus scelerisque facilisis dignissim.', 2));
+images.push(new Img(3, 'img/img_03.jpg', 'Beautiful Valley', 'Maecenas eget augue sagittis, imperdiet dolor vitae, rhoncus orci. Fusce elementum tincidunt mi nec tempus. Morbi faucibus sapien augue, at facilisis enim maximus ut. Nullam.', 3));
+images.push(new Img(4, 'img/img_04.jpg', 'Northern Pier', 'Phasellus eleifend metus in tellus semper, nec consectetur neque viverra. Aenean a tempus est, quis mollis urna. Duis aliquam dui ut hendrerit ullamcorper. Nulla tempus.', 4));
+images.push(new Img(5, 'img/img_05.jpg', 'Mountain Top House', 'Proin sodales commodo elit quis aliquam. Cras elementum enim a eros viverra sollicitudin. Aliquam suscipit lorem eget risus tristique, sit amet lacinia felis malesuada. Quisque.', 5));
+images.push(new Img(6, 'img/img_06.jpg', 'Spring Forest', 'Nullam ultrices, elit nec consectetur luctus, dolor metus pretium sem, sed tincidunt sapien metus eget nisi. Pellentesque non mollis purus. Integer aliquet lorem massa, nec.', 6));
+images.push(new Img(7, 'img/img_07.jpg', 'City Scape', 'Donec iaculis tincidunt tincidunt. Ut aliquam sapien sit amet metus dapibus tempus. Sed fringilla ut sem at ullamcorper. Maecenas euismod sapien quis sapien venenatis cursus.', 7));
+images.push(new Img(8, 'img/img_08.jpg', 'Vintage Music', 'Phasellus pellentesque metus non enim ultricies vulputate. Phasellus nec urna eu eros ultrices laoreet non eu magna. Vestibulum ante ipsum primis in faucibus orci luctus.', 8));
+images.push(new Img(9, 'img/img_09.jpg', '9th img', 'Phasellus pellentesque metus non enim ultricies vulputate. Phasellus nec urna eu eros ultrices laoreet non eu magna. Vestibulum ante ipsum primis in faucibus orci luctus.', 9));
 // variables
 var selected = 1;
 // getting HTML Elements
@@ -70,7 +81,6 @@ function setSelectedImage(toSelect) {
     // add 'selected' class to list element
     thumbnail.classList.add('selected');
     // set selected indicator
-    console.log('setting indicator');
     setSelectedIndicator(selected);
 }
 function setNext(current, direction) {
@@ -87,7 +97,6 @@ function setSelectedIndicator(selected) {
     var liCount = document.querySelectorAll('li').length;
     var selectedId = selected - 1;
     var leftPos = (1100 - 84 * liCount) / 2 + 34 + 84 * selectedId;
-    console.log(leftPos);
     selectedIndicator.style.left = leftPos.toString() + 'px';
 }
 // event listeners
@@ -97,6 +106,17 @@ rightArrow.onclick = function () {
 };
 leftArrow.onclick = function () {
     setNext(selected, -1);
+    setSelectedImage(selected);
+};
+document.body.onkeydown = function (event) {
+    switch (event.key) {
+        case 'ArrowRight':
+            setNext(selected, 1);
+            break;
+        case 'ArrowLeft':
+            setNext(selected, -1);
+            break;
+    }
     setSelectedImage(selected);
 };
 var listElements = document.getElementsByTagName('li');
