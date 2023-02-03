@@ -1,0 +1,23 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "name": "Balázs"
+        },{
+            "id": 2,
+            "name": "Bence"
+        },{
+            "id": 3,
+            "name": "Tamás"
+        },{
+            "id": 4,
+            "name": "Tekla"
+        },{
+            "id": 5,
+            "name": "Zoli"
+        },{
+            "id": 6,
+            "name": "Zsófi"
+        }
+    ]
+}

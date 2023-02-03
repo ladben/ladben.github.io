@@ -1,0 +1,23 @@
+@font-face {
+    font-family: 'classic-cassette';
+    src: url('./font_classic-cassette.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'saint-carell';
+    src: url('./font_saint-carell.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+  
+.hello {
+    color: red;
+    font-family: 'classic-cassette';
+    font-size: 6rem;
+}
+
+body {
+    background: black;
+}
