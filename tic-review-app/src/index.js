@@ -3,19 +3,25 @@ import './style.css';
 import Icon from './icon.png';
 import users from './data.json';
 
-function component() {
-    const element = document.createElement('div');
+function getMainHtml() {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'wrapper';
+    wrapper.innerHTML = ''
+        + '<div class="title"><h1>Ki fog ma tesztelni?</h1></div>';
 
-    element.innerHTML = users.users[4].name;
-    element.classList.add('hello');
 
-    // Add the image to our existing div.
-    const myIcon = new Image();
-    myIcon.src = Icon;
+    // const element = document.createElement('div');
 
-    element.onclick = pickRandom;
+    // element.innerHTML = users.users[1].name;
+    // element.classList.add('hello');
 
-    return element;
+    // // Add the image to our existing div.
+    // const myIcon = new Image();
+    // myIcon.src = Icon;
+
+    // element.onclick = pickRandom;
+
+    return wrapper;
 }
 
-document.body.appendChild(component());
+document.body.appendChild(getMainHtml());

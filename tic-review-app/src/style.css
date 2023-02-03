@@ -11,6 +11,11 @@
     font-weight: normal;
     font-style: normal;
 }
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+}
   
 .hello {
     color: red;
@@ -19,5 +24,10 @@
 }
 
 body {
-    background: black;
+    background: url("https://www.prefixbox.com/img/geometric_illustrations/web/home_hero_bg.svg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #232323;
+    height: 100vh;
 }
